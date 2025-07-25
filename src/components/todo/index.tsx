@@ -1,3 +1,4 @@
+'use client'
 import { FilterTypes, Todo } from '@/types/todo'
 import { useCallback } from 'react'
 import { TodoMap } from './TodoMap'
