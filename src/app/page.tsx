@@ -1,5 +1,5 @@
 'use client'
-import { TodoWrapper } from '@/components/TodoWrapper'
+import { TodoWrapper } from '@/components/todo/index'
 import { FilterTypes, Todo, TodoField } from '@/types/todo'
 import { useCallback, useState } from 'react'
 
