@@ -9,7 +9,8 @@ type InputLabelType = {
   id: string
   placeholder?: string
   error?: string | null
-}
+  props?: object
+} & React.InputHTMLAttributes<HTMLInputElement>
 
 export function InputLabel({
   value,
@@ -18,6 +19,7 @@ export function InputLabel({
   placeholder = ' ',
   label,
   error,
+  props,
 }: InputLabelType) {
   return (
     <div className="relative w-full max-w-md">
@@ -26,15 +28,16 @@ export function InputLabel({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        {...props}
         className={cn(
-          'peer h-12 w-full rounded-xl border border-neutral-700 bg-background px-4 pt-5 pb-2 text-sm dark:text-white shadow-inner',
+          'peer h-12 w-full rounded-xl border border-neutral-700 bg-background px-4 pt-5 pb-2 text-sm dark:text-white shadow-inner transition-all',
           'focus:border-purple-500 focus:ring-2 focus:ring-purple-500'
         )}
       />
       <label
         htmlFor={id}
         className={cn(
-          'pointer-events-none absolute left-4 top-2 text-xs text-muted-foreground ',
+          'pointer-events-none absolute left-4 top-2 text-xs text-muted-foreground transition-all',
           'peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-muted-foreground',
           'peer-focus:top-2 peer-focus:text-xs peer-focus:text-purple-500'
         )}

@@ -1,8 +1,7 @@
 
-export type Todo = {
+export type TodoType = {
   id: string
-  label: string
-  completed: boolean
+  name: string
 }
 
 export type FilterTypes = 'active' | 'all' | 'completed'
@@ -13,11 +12,21 @@ export type FilterCheckboxType = {
   activeValue: FilterTypes
 }
 
-export type TodoMapType = Todo & {
+export type TodoMapType = TodoType & {
   handleChange: (id: string) => void
 }
 
 export type TodoField = {
   error: string | null
   value: string
+}
+
+export type SectionsType = {
+  sections: []
+}
+
+export type SectionType = {
+  id: string
+  name: string
+  todos: TodoType[]
 }
