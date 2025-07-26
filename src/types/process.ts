@@ -1,0 +1,1 @@
+export type InputProcess<T> = React.ChangeEvent<T>
