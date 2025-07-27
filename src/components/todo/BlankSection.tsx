@@ -34,7 +34,7 @@ export function BlankSection({ color }: PropsType) {
     firstInput.blur()
 
     setField(initialField)
-    addSection({ color, id: uId, name: field.value, todos: [] })
+    addSection({ color, id: uId(), name: field.value, todos: [] })
   }
 
   const handleChange = (e: InputProcess<HTMLInputElement>): void => {

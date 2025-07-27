@@ -1,3 +1,6 @@
+'use client'
+import { useCallback } from 'react'
+
 export const useUId = () => {
-  return Date.now()
+  return useCallback(() => Date.now(), [])
 }

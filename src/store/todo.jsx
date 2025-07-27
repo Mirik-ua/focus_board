@@ -7,11 +7,11 @@ export const useStoreTodo = create()(
             (set) => ({
         sections: [],
         addSection: (data) => set((state) => ({...state, sections: ([ ...state.sections, data ])})),
-        addTodo: ({ sectionId, value, uId }) => set((state) => ({
+        addTodo: ({ sectionId, value, id }) => set((state) => ({
             ...state,
             sections: state.sections.map((s) => {
                 if(s.id === sectionId) {
-                    return {...s, todos: [...s.todos, {name: value, id: uId}]}
+                    return {...s, todos: [...s.todos, {name: value, id}]}
                 }else {
                     return s
                 }
