@@ -1,9 +1,10 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
-import {SectionsType} from '@/types/todo'
+import { devtools, persist } from 'zustand/middleware'
 
 export const useStoreTodo = create()(
-    devtools((set) => ({
+    devtools(
+        persist( 
+            (set) => ({
         sections: [],
         addSection: (data) => set((state) => ({...state, sections: ([ ...state.sections, data ])})),
         addTodo: ({ sectionId, value, uId }) => set((state) => ({
@@ -16,4 +17,4 @@ export const useStoreTodo = create()(
                 }
             })
             }))
-    }), { name: 'SectionStore' }))
+    }), { name: 'SectionStore' })))

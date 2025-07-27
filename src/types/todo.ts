@@ -28,5 +28,6 @@ export type SectionsType = {
 export type SectionType = {
   id: string
   name: string
+  color: string
   todos: TodoType[]
 }

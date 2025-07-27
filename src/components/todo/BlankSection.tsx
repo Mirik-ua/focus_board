@@ -4,15 +4,20 @@ import { InputProcess } from '@/types/process'
 import { useState } from 'react'
 import { useStoreTodo } from '@/store/todo'
 import { useUId } from '@/hooks/useUid'
+import { useColors } from '@/hooks/useColor'
 
 type FieldType = {
   value: string
   error: null | string
 }
 
+type PropsType = {
+  color: string
+}
+
 const initialField = { value: '', error: null }
 
-export function BlankSection() {
+export function BlankSection({ color }: PropsType) {
   const [field, setField] = useState<FieldType>(initialField)
   const { addSection } = useStoreTodo()
   const uId = useUId()
@@ -30,7 +35,7 @@ export function BlankSection() {
     firstInput.blur()
 
     setField(initialField)
-    addSection({ id: uId, name: field.value, todos: [] })
+    addSection({ color, id: uId, name: field.value, todos: [] })
   }
 
   const handleChange = (e: InputProcess<HTMLInputElement>): void => {
