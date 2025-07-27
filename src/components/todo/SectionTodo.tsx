@@ -16,7 +16,10 @@ export function SectionTodo({ section }: { section: SectionType }) {
 
   return (
     <div>
-      <div className="border-b-1 flex items-center justify-between border-gray-200 pb-4">
+      <div
+        className="border-b-1 flex items-center justify-between border-gray-200
+                      sticky top-0 bg-background p-4"
+      >
         <h3 className={'font-bold break-words'}>{section.name}</h3>
         <RemoveX
           popover={true}
@@ -24,7 +27,10 @@ export function SectionTodo({ section }: { section: SectionType }) {
           onDelete={handleDelete}
         />
       </div>
-      <div className="mt-5 flex flex-col gap-4">
+      <div
+        className="flex py-4 px-4 max-h-fit flex-col gap-4 overflow-y-scroll"
+        style={{ maxHeight: 'calc(100vh - 290px)' }}
+      >
         {section.todos.length
           ? section.todos.map((s) => (
               <TodoBlock handleChange={handleChange} key={s.id} {...s} />

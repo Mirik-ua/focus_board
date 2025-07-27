@@ -29,7 +29,7 @@ export function BlankTodo({ sectionId, sectionName }: SectionsType) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-1 'border-b-1 border-gray-200'">
+    <form onSubmit={handleSubmit}>
       <InputLabel
         value={value}
         id={sectionName + sectionId}
