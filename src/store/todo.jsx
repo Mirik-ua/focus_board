@@ -10,9 +10,9 @@ export const useStoreTodo = create()(
         addTodo: ({ sectionId, value, id, done }) => set((state) => ({
             ...state,
             sections: state.sections.map((s) => {
-                if(s.id === sectionId) {
+                if (s.id === sectionId) {
                     return {...s, todos: [...s.todos, {name: value, done, id}]}
-                }else {
+                } else {
                     return s
                 }
             })
@@ -33,6 +33,15 @@ export const useStoreTodo = create()(
                         }
                     })}
                 } else {
+                    return s
+                }
+            })
+            })),
+        deleteSection: (sectionId) => set((state) => ({
+            ...state,
+            sections: state.sections.filter((s) => {
+                console.log(s ,sectionId)
+                if (s.id !== sectionId) {
                     return s
                 }
             })

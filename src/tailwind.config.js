@@ -57,6 +57,17 @@ const config = {
     },
   },
   plugins: [],
+  extend: {
+    keyframes: {
+      spinIn: {
+        '0%': { transform: 'rotate(0deg)', opacity: '0' },
+        '100%': { transform: 'rotate(220deg)', opacity: '1' },
+      },
+    },
+    animation: {
+      spinIn: 'spinIn 1s ease-in-out',
+    },
+  },
 }
 
 export default config
