@@ -30,7 +30,7 @@ export function InputLabel({
         placeholder={placeholder}
         {...props}
         className={cn(
-          'peer h-12 w-full rounded-xl border border-neutral-700 bg-background px-4 pt-5 pb-2 text-sm dark:text-white shadow-inner transition-all',
+          'peer h-12 w-full rounded-xl border border-neutral-700 bg-background px-4 pt-5 pb-2 text-sm dark:text-white shadow-inner',
           'placeholder:text-white-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-500'
         )}
       />
