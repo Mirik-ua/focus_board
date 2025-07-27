@@ -4,7 +4,6 @@ import { InputProcess } from '@/types/process'
 import { useState } from 'react'
 import { useStoreTodo } from '@/store/todo'
 import { useUId } from '@/hooks/useUid'
-import { useColors } from '@/hooks/useColor'
 
 type FieldType = {
   value: string
