@@ -12,13 +12,13 @@ export default function TodoList() {
 
   return (
     <div
-      className="flex font-sans  pt-20  px-6 gap-16  pb-6"
+      className="flex font-sans pt-20 gap-16 overflow-x-scroll pb-6"
       style={{
         height: 'calc(100vh - 100px)',
         maxHeight: 'calc(100vh - 100px)',
       }}
     >
-      <main className="flex overflow-x-scroll gap-[32px] ">
+      <main className="flex gap-[32px] px-6">
         {sections.length
           ? sections.map((s: SectionType) => (
               <SectionBlock key={s.id} color={s.color}>
