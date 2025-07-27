@@ -40,7 +40,6 @@ export const useStoreTodo = create()(
         deleteSection: (sectionId) => set((state) => ({
             ...state,
             sections: state.sections.filter((s) => {
-                console.log(s ,sectionId)
                 if (s.id !== sectionId) {
                     return s
                 }
