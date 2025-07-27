@@ -10,7 +10,6 @@ export default function TodoList() {
   const { sections } = useStoreTodo()
   const color = useColors()
 
-  console.log(color)
   return (
     <div
       className="flex font-sans pt-20 gap-16 overflow-x-scroll pb-6"

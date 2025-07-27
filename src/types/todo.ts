@@ -2,6 +2,7 @@
 export type TodoType = {
   id: string
   name: string
+  done: boolean
 }
 
 export type FilterTypes = 'active' | 'all' | 'completed'

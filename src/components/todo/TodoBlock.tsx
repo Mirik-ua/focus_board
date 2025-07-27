@@ -1,8 +1,13 @@
+import { Checkbox } from '@/components/ui/checkbox'
+
 type Props = {
   name: string
+  id: string
+  done: boolean
+  handleChange: (id: string) => void
 }
 
-export function TodoBlock({ name }: Props) {
+export function TodoBlock({ name, id, done, handleChange }: Props) {
   return (
     <div
       className="rounded-lg px-4 py-3 text-foreground border transition-colors
@@ -17,7 +22,10 @@ export function TodoBlock({ name }: Props) {
         transition: 'background-color 0.6s ease',
       }}
     >
-      {name}
+      <div id={id} className="flex items-center gap-2">
+        <Checkbox checked={done} onCheckedChange={() => handleChange(id)} />
+        {name}
+      </div>
     </div>
   )
 }
