@@ -15,6 +15,9 @@ type Props = {
   open?: boolean
   showTrigger?: boolean
   trigger?: JSX.Element | string
+  showCloseButton: boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onInteractOutside: ((e: any) => void) | undefined
 
   headerDescription: string
   headerText: string
@@ -25,11 +28,14 @@ type Props = {
 
 export function UserDialogWrapper({
   open,
-  onOpenChange,
+  showCloseButton,
   showTrigger,
   headerText,
   headerDescription,
+
   Main,
+  onOpenChange,
+  onInteractOutside,
 }: Props) {
   return (
     <Dialog modal={true} open={open} onOpenChange={onOpenChange}>
@@ -39,9 +45,9 @@ export function UserDialogWrapper({
         </DialogTrigger>
       ) : null}
       <DialogContent
-        showCloseButton={false}
+        showCloseButton={showCloseButton}
         className="sm:max-w-[425px]"
-        onInteractOutside={(e) => e.preventDefault()}
+        onInteractOutside={onInteractOutside}
       >
         <DialogHeader>
           <DialogTitle>{headerText}</DialogTitle>

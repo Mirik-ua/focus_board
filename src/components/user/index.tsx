@@ -92,9 +92,6 @@ export default function UserDialog() {
       case 'create': {
         return `Enter your name so we know who to ping when nothing's done.`
       }
-      case 'edit': {
-        return ' '
-      }
       default:
         return ' '
     }
@@ -105,6 +102,10 @@ export default function UserDialog() {
       <UserDialogWrapper
         open={isPopShow}
         showTrigger={false}
+        showCloseButton={mode === 'edit'}
+        onInteractOutside={
+          mode === 'create' ? (e) => e.preventDefault() : undefined
+        }
         onOpenChange={handlePopChange}
         headerText={getHeaderText}
         headerDescription={getDescriptionText}
