@@ -49,7 +49,6 @@ export default function UserDialog() {
   const handleSubmit = (e: InputProcess<HTMLFormElement>) => {
     e.preventDefault()
 
-    console.log(field.name)
     if (!inputValidation(field.name)) {
       setField((prev) => {
         return { ...prev, error: 'Please fulfill your name' }
