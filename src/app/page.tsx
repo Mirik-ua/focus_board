@@ -2,7 +2,7 @@
 import { BlankSection } from '@/components/todo/BlankSection'
 import { SectionBlock } from '@/components/todo/SectionBlock'
 import { SectionTodo } from '@/components/todo/SectionTodo'
-import UserDialogWrapper from '@/components/user/index'
+import UserDialog from '@/components/user/index'
 import { useColors } from '@/hooks/useColor'
 import { useStoreTodo } from '@/store/todo'
 import { SectionType } from '@/types/todo'
@@ -19,7 +19,7 @@ export default function TodoList() {
         maxHeight: 'calc(100vh - 100px)',
       }}
     >
-      <UserDialogWrapper />
+      <UserDialog mode={'create'} />
       <main className="flex gap-[32px] px-6">
         {sections.length
           ? sections.map((s: SectionType) => (

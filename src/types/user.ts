@@ -8,3 +8,5 @@ export type UserField = {
     name: string,
     error: null | string
 }
+
+export type UserMode = 'edit' | 'create' | null
