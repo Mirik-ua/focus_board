@@ -19,7 +19,7 @@ export default function TodoList() {
         maxHeight: 'calc(100vh - 100px)',
       }}
     >
-      <UserDialog mode={'create'} />
+      <UserDialog />
       <main className="flex gap-[32px] px-6">
         {sections.length
           ? sections.map((s: SectionType) => (
