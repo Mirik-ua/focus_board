@@ -19,7 +19,7 @@ export function BlankTodo({ sectionId, sectionName }: SectionsType) {
     e.preventDefault()
 
     if (value.length > 1) {
-      addTodo({ sectionId, sectionName, value, id: uId(), done: false })
+      addTodo({ sectionId, sectionName, name: value, id: uId(), done: false })
       setValue('')
     }
   }
