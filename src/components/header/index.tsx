@@ -1,11 +1,13 @@
 'use client'
 
+import { useStoreUser } from '@/store/user'
 import { ToggleBtn } from './ToggleBtn'
 import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
 
 export const Header = () => {
   const { setTheme, resolvedTheme } = useTheme()
+  const { user } = useStoreUser()
 
   const isDark = useMemo(() => resolvedTheme === 'dark', [resolvedTheme])
 
@@ -20,7 +22,14 @@ export const Header = () => {
           : '0 10px 30px rgba(23, 23, 23, 0.08)',
       }}
     >
-      <div className="flex w-[100%] justify-end items-center gap-2">
+      {user?.id ? (
+        <h3 className={'font-bold break-words w-fit'}>Hey, {user.name}</h3>
+      ) : null}
+      <div
+        className={`flex ${
+          user?.id ? 'w-max' : 'w-[100%]'
+        } justify-end items-center gap-2`}
+      >
         <ToggleBtn
           text={isDark ? '🌞' : '🌙'}
           handleClick={handleTheme}

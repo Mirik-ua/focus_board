@@ -19,7 +19,7 @@ export function InputLabel({
   placeholder = ' ',
   label,
   error,
-  props,
+  ...props
 }: InputLabelType) {
   return (
     <div className="relative w-full max-w-md">
