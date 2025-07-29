@@ -24,7 +24,7 @@ export function TodoBlock({ name, id, done, handleChange }: Props) {
     >
       <div id={id} className="flex items-center gap-2">
         <Checkbox checked={done} onCheckedChange={() => handleChange(id)} />
-        {name}
+        <span className="text-sm">{name}</span>
       </div>
     </div>
   )

@@ -116,7 +116,6 @@ export default function UserDialog() {
             data={{ name: field.name, error: field.error }}
           />
         }
-        trigger={''}
       />
     </form>
   )

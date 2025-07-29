@@ -1,4 +1,5 @@
 'use client'
+import { FilterSection } from '@/components/filter'
 import { BlankSection } from '@/components/todo/BlankSection'
 import { SectionBlock } from '@/components/todo/SectionBlock'
 import { SectionTodo } from '@/components/todo/SectionTodo'
@@ -20,19 +21,22 @@ export default function TodoList() {
       }}
     >
       <UserDialog />
-      <main className="flex gap-[32px] px-6">
-        {sections.length
-          ? sections.map((s: SectionType) => (
-              <SectionBlock key={s.id} color={s.color}>
-                <SectionTodo section={s} />
-              </SectionBlock>
-            ))
-          : null}
-        <SectionBlock color={color}>
-          <div className="overflow-y-auto">
-            {<BlankSection color={color} />}
-          </div>
-        </SectionBlock>
+      <main className="flex flex-col gap-[32px] px-6">
+        <FilterSection />
+        <section className="flex gap-[32px]">
+          {sections.length
+            ? sections.map((s: SectionType) => (
+                <SectionBlock key={s.id} color={s.color}>
+                  <SectionTodo section={s} />
+                </SectionBlock>
+              ))
+            : null}
+          <SectionBlock color={color}>
+            <div className="overflow-y-auto">
+              {<BlankSection color={color} />}
+            </div>
+          </SectionBlock>
+        </section>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"></footer>
     </div>

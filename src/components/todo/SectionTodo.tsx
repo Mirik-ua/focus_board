@@ -4,6 +4,8 @@ import { TodoBlock } from './TodoBlock'
 import { useStoreTodo } from '@/store/todo'
 import { RemoveX } from '../../shared/RemoveX'
 
+const STATIC_BLOCK_HEIGHT = '100vh - 340px'
+
 export function SectionTodo({ section }: { section: SectionType }) {
   const { updateTodoCheckbox, deleteSection } = useStoreTodo()
 
@@ -29,7 +31,7 @@ export function SectionTodo({ section }: { section: SectionType }) {
       </div>
       <div
         className="flex py-4 px-4 max-h-fit flex-col gap-4 overflow-y-scroll"
-        style={{ maxHeight: 'calc(100vh - 290px)' }}
+        style={{ maxHeight: `calc(${STATIC_BLOCK_HEIGHT})` }}
       >
         {section.todos.length
           ? section.todos.map((s) => (
