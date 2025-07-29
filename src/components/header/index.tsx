@@ -3,10 +3,9 @@
 import { useStoreUser } from '@/store/user'
 import { ToggleBtn } from './ToggleBtn'
 import { useTheme } from 'next-themes'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Settings } from 'lucide-react'
-import { Button } from '../ui/button'
-import UserDialog from '../user/index'
+import { BlueButton } from '@/shared/BlueButton'
 
 export const Header = () => {
   const { setTheme, resolvedTheme } = useTheme()
@@ -39,13 +38,9 @@ export const Header = () => {
           user?.id ? 'w-max' : 'w-[100%]'
         } justify-end items-center gap-2`}
       >
-        <Button
-          className="rounded-xl border border-white/10 hover:border-[#3b82f6]/30 bg-black/60 text-white hover:text-[#3b82f6] shadow-[0_0_8px_#3b82f6] hover:shadow-[0_0_12px_#3b82f6] transition"
-          onClick={handleUserPopover}
-        >
+        <BlueButton props={{ onClick: handleUserPopover }}>
           <Settings className="w-5 h-5" />
-        </Button>
-
+        </BlueButton>
         <ToggleBtn
           text={isDark ? '🌞' : '🌙'}
           handleClick={handleTheme}

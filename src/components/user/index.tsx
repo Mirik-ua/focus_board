@@ -1,9 +1,9 @@
-import { UserDialogWrapper } from './user-dialog-wrapper'
+import { UserDialogWrapper } from './UserDialogWrapper'
 import { useStoreUser } from '@/store/user'
 import { useEffect, useId, useMemo, useState } from 'react'
 import { UserField } from '@/types/user'
 import { InputProcess } from '@/types/process'
-import { UserDialogMain } from './user-dialog-main'
+import { UserDialogMain } from './userDialogMain'
 
 const initialField = {
   name: '',
