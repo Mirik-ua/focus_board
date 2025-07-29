@@ -1,11 +1,19 @@
 import mock from '@/mocks/todo.json'
+import { FilterTypes } from '@/types/todo'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FilterText } from './FilterText'
 
 type Props = {
   showFilter: boolean
+  activeFilter: FilterTypes
+  onChange: (filter: FilterTypes) => void
 }
 
-export const AnimateFilter = ({ showFilter }: Props) => (
+export const AnimateFilter = ({
+  showFilter,
+  activeFilter,
+  onChange,
+}: Props) => (
   <AnimatePresence>
     {showFilter && (
       <motion.div
@@ -16,12 +24,12 @@ export const AnimateFilter = ({ showFilter }: Props) => (
         className="flex items-center gap-2 absolute left-14"
       >
         {mock.todoFilters.map((i) => (
-          <div
+          <FilterText
             key={i}
-            className="cursor-pointer px-3 py-1 rounded-md border border-white/20 hover:bg-white/10 transition"
-          >
-            <span>{i}</span>
-          </div>
+            onChange={onChange}
+            activeFilter={activeFilter}
+            filterName={i as FilterTypes}
+          />
         ))}
       </motion.div>
     )}

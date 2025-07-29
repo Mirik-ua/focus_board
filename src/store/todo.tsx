@@ -1,9 +1,11 @@
-import { SectionType, TodoType } from '@/types/todo'
+import { SectionType, TodoType, FilterTypes } from '@/types/todo'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
 type Store = {
   sections: SectionType[]
+  activeFilter: FilterTypes
+  updateFilter: (filter: FilterTypes) => void
   addTodo: ({
     sectionId,
     name,
@@ -20,6 +22,9 @@ export const useStoreTodo = create<Store>()(
     persist(
       (set) => ({
         sections: [],
+        activeFilter: 'all',
+        updateFilter: (filter) =>
+          set((state) => ({ ...state, activeFilter: filter })),
         addSection: (data: SectionType) =>
           set((state) => ({ ...state, sections: [...state.sections, data] })),
         addTodo: ({
