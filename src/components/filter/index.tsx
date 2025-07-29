@@ -1,6 +1,6 @@
 import { BlueButton } from '@/shared/BlueButton'
 import { Filter } from 'lucide-react'
-import { memo, useCallback, useMemo, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { AnimateFilter } from './AnimateFilter'
 import { useStoreTodo } from '@/store/todo'
 
@@ -12,6 +12,7 @@ export const FilterSection = memo(function FilterSection() {
 
   const handleShowFilter = useCallback(() => setShowFilter((prev) => !prev), [])
 
+  console.log(' wtfff update s')
   return (
     <div className="flex items-center gap-4 relative ">
       <BlueButton props={{ onClick: handleShowFilter }}>

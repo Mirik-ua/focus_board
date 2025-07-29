@@ -22,7 +22,7 @@ export default function TodoList() {
     >
       <UserDialog />
       <main className="flex flex-col gap-[32px] px-6">
-        <FilterSection update={false} />
+        <FilterSection />
         <section className="flex gap-[32px]">
           {sections.length
             ? sections.map((s: SectionType) => (

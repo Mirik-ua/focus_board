@@ -3,7 +3,7 @@ import { useStoreUser } from '@/store/user'
 import { useEffect, useId, useMemo, useState } from 'react'
 import { UserField } from '@/types/user'
 import { InputProcess } from '@/types/process'
-import { UserDialogMain } from './userDialogMain'
+import { UserDialogMain } from './UserDialogMain'
 
 const initialField = {
   name: '',
