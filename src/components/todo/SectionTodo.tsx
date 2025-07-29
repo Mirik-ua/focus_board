@@ -1,4 +1,4 @@
-import { FilterTypes, SectionType, TodoType } from '@/types/todo'
+import { FilterTypes, SectionType } from '@/types/todo'
 import { BlankTodo } from './BlankTodo'
 import { TodoBlock } from './TodoBlock'
 import { useStoreTodo } from '@/store/todo'
