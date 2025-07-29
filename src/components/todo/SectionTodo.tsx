@@ -1,4 +1,4 @@
-import { SectionType } from '@/types/todo'
+import { FilterTypes, SectionType, TodoType } from '@/types/todo'
 import { BlankTodo } from './BlankTodo'
 import { TodoBlock } from './TodoBlock'
 import { useStoreTodo } from '@/store/todo'
@@ -7,7 +7,7 @@ import { RemoveX } from '../../shared/RemoveX'
 const STATIC_BLOCK_HEIGHT = '100vh - 340px'
 
 export function SectionTodo({ section }: { section: SectionType }) {
-  const { updateTodoCheckbox, deleteSection } = useStoreTodo()
+  const { updateTodoCheckbox, deleteSection, activeFilter } = useStoreTodo()
 
   const handleChange = (id: string) => updateTodoCheckbox(section.id, id)
 
@@ -35,11 +35,60 @@ export function SectionTodo({ section }: { section: SectionType }) {
       >
         {section.todos.length
           ? section.todos.map((s) => (
-              <TodoBlock handleChange={handleChange} key={s.id} {...s} />
+              <MapTodo
+                key={s.id}
+                activeFilter={activeFilter}
+                handleChange={handleChange}
+                done={s.done}
+                name={s.name}
+                id={s.id}
+              />
             ))
           : null}
         <BlankTodo sectionId={section.id} sectionName={section.name} />
       </div>
     </div>
   )
+}
+
+type Props = {
+  activeFilter: FilterTypes
+  handleChange: (id: string) => void
+  done: boolean
+  name: string
+  id: string
+}
+
+const MapTodo = ({ activeFilter, handleChange, done, id, name }: Props) => {
+  switch (activeFilter) {
+    case 'active': {
+      return !done ? (
+        <TodoBlock
+          handleChange={handleChange}
+          done={done}
+          name={name}
+          id={id}
+        />
+      ) : null
+    }
+    case 'completed': {
+      return done ? (
+        <TodoBlock
+          handleChange={handleChange}
+          done={done}
+          name={name}
+          id={id}
+        />
+      ) : null
+    }
+    default:
+      return (
+        <TodoBlock
+          handleChange={handleChange}
+          done={done}
+          name={name}
+          id={id}
+        />
+      )
+  }
 }
