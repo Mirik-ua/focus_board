@@ -1,5 +1,4 @@
 import { SectionType, TodoType, FilterTypes } from '@/types/todo'
-import { arrayMove } from '@dnd-kit/sortable'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
