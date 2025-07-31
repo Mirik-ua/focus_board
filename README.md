@@ -1,17 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Focus Board - Smart Drag & Drop ToDo App
 
-## Getting Started
+Focus Board is a to-do task manager with animation, drag-and-drop functionality, and a minimalist design. Developed with a focus on productivity, flexibility, and pleasant interaction
 
-First, run the development server:
+## ✨ Functional
+
+- ✅ Add/Remove todos
+- 👤 User setup
+- 🔍 Filter todos: `All`, `Active`, `Completed`
+- 📦 Drag & Drop сортування секцій та тасок (DndKit)
+- 🌙 Light / Dark theme
+- 🧠 State by Zustand
+- ♿ accessibility (a11y-ready components from shadcn/ui)
+- ⚡️ Performance optimizations by memo/useCallback/useMemo
+
+## 🛠️ Tech Stack
+
+- **Next.js** 15 (App Router)
+- **React** 19
+- **TypeScript**
+- **Tailwind CSS** 4
+- **shadcn/ui**
+- **frame-motion** animation
+- **Zustand**
+- **@dnd-kit**
+- **Lucide**
+
+## 🚀 Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+git clone https://github.com/Mirik-ua/focus_board
+cd mytodo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Встановлення залежностей
+npm install
+
+# Запуск у режимі розробки
+npm run dev
+```
