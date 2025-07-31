@@ -1,4 +1,5 @@
 import { SectionType, TodoType, FilterTypes } from '@/types/todo'
+import { arrayMove } from '@dnd-kit/sortable'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
@@ -15,6 +16,7 @@ type Store = {
   addSection: (data: SectionType) => void
   updateTodoCheckbox: (sectionId: string, todoId: string) => void
   deleteSection: (sectionId: string) => void
+  updateSectionIndex: (sections: SectionType[]) => void
 }
 
 export const useStoreTodo = create<Store>()(
@@ -75,6 +77,9 @@ export const useStoreTodo = create<Store>()(
               }
             }),
           })),
+        updateSectionIndex: (newSections: SectionType[]) => {
+          return set((state) => ({ ...state, sections: newSections }))
+        },
       }),
       { name: 'SectionStore' }
     )

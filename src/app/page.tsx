@@ -2,14 +2,13 @@
 import { FilterSection } from '@/components/filter'
 import { BlankSection } from '@/components/todo/BlankSection'
 import { SectionBlock } from '@/components/todo/SectionBlock'
-import { SectionTodo } from '@/components/todo/SectionTodo'
 import UserDialog from '@/components/user/index'
 import { useColors } from '@/hooks/useColor'
 import { useStoreTodo } from '@/store/todo'
-import { SectionType } from '@/types/todo'
+import { SectionDnD } from '@/components/dnd'
 
 export default function TodoList() {
-  const { sections } = useStoreTodo()
+  const { sections, updateSectionIndex } = useStoreTodo()
   const color = useColors()
 
   return (
@@ -21,22 +20,21 @@ export default function TodoList() {
       }}
     >
       <UserDialog />
-      <main className="flex flex-col gap-[32px] px-6">
+      <main className="flex flex-col gap-[16px] px-6">
         <FilterSection />
-        <section className="flex gap-[32px]">
-          {sections.length
-            ? sections.map((s: SectionType) => (
-                <SectionBlock key={s.id} color={s.color}>
-                  <SectionTodo section={s} />
-                </SectionBlock>
-              ))
-            : null}
+        <div className="flex gap-[32px]">
+          {sections && (
+            <SectionDnD
+              sections={sections}
+              updateSectionIndex={updateSectionIndex}
+            />
+          )}
           <SectionBlock color={color}>
             <div className="overflow-y-auto">
               {<BlankSection color={color} />}
             </div>
           </SectionBlock>
-        </section>
+        </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"></footer>
     </div>
