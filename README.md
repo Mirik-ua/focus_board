@@ -1,17 +1,17 @@
 # 📝 Focus Board - Smart Drag & Drop ToDo App
 
-Focus Board is a to-do task manager with animation, drag-and-drop functionality, and a minimalist design. Developed with a focus on productivity, flexibility, and pleasant interaction
+**Focus Board** is a to-do task manager with animation, drag-and-drop functionality, and a minimalist design. Built with a focus on productivity, flexibility, and delightful interaction.
 
-## ✨ Functional
+## ✨ Features
 
-- ✅ Add/Remove todos
+- ✅ Add / remove todos
 - 👤 User setup
 - 🔍 Filter todos: `All`, `Active`, `Completed`
-- 📦 Drag & Drop сортування секцій та тасок (DndKit)
-- 🌙 Light / Dark theme
-- 🧠 State by Zustand
-- ♿ accessibility (a11y-ready components from shadcn/ui)
-- ⚡️ Performance optimizations by memo/useCallback/useMemo
+- 📦 Drag & Drop sorting for sections and tasks (`@dnd-kit`)
+- 🌙 Light / Dark theme toggle
+- 🧠 Global state management with Zustand
+- ♿ Accessible components (via forms & `shadcn/ui`)
+- ⚡️ Performance optimizations with `memo`, `useCallback`, `useMemo`
 
 ## 🛠️ Tech Stack
 
@@ -20,20 +20,23 @@ Focus Board is a to-do task manager with animation, drag-and-drop functionality,
 - **TypeScript**
 - **Tailwind CSS** 4
 - **shadcn/ui**
-- **frame-motion** animation
-- **Zustand**
-- **@dnd-kit**
-- **Lucide**
+- **Framer Motion** for animation
+- **Zustand** for state
+- **@dnd-kit** for drag-and-drop
+- **Lucide** for icons
 
-## 🚀 Run
+## 🚀 Getting Started
 
 ```bash
 git clone https://github.com/Mirik-ua/focus_board
-cd mytodo
+cd focus_board
 
-# Встановлення залежностей
+# Install dependencies
 npm install
 
-# Запуск у режимі розробки
+# Run in development mode
 npm run dev
+
+# Deployed
+👉 https://focusboard-phi.vercel.app
 ```
