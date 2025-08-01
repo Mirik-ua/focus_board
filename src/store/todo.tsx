@@ -13,6 +13,7 @@ type Store = {
     done,
   }: TodoType & { sectionId: string }) => void
   addSection: (data: SectionType) => void
+  deleteTodo: (sectionId: string, todoId: string) => void
   updateTodoCheckbox: (sectionId: string, todoId: string) => void
   deleteSection: (sectionId: string) => void
   updateSectionIndex: (sections: SectionType[]) => void
@@ -28,6 +29,17 @@ export const useStoreTodo = create<Store>()(
           set((state) => ({ ...state, activeFilter: filter })),
         addSection: (data: SectionType) =>
           set((state) => ({ ...state, sections: [...state.sections, data] })),
+        deleteTodo: (sectionId: string, todoId: string) =>
+          set((state) => ({
+            ...state,
+            sections: state.sections.map((s) => {
+              if (s.id === sectionId) {
+                return { ...s, todos: s.todos.filter((t) => t.id !== todoId) }
+              } else {
+                return s
+              }
+            }),
+          })),
         addTodo: ({
           sectionId,
           name,

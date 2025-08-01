@@ -6,10 +6,30 @@ import UserDialog from '@/components/user/index'
 import { useColors } from '@/hooks/useColor'
 import { useStoreTodo } from '@/store/todo'
 import { SectionDnD } from '@/components/dnd'
+import { TodoEvent } from '@/types/todo'
+import { MouseEvent } from 'react'
 
 export default function TodoList() {
-  const { sections, updateSectionIndex } = useStoreTodo()
+  const { sections, updateSectionIndex, deleteTodo } = useStoreTodo()
   const color = useColors()
+
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement
+    const item = target.closest('[data-id]')
+    if (!item) {
+      return
+    }
+
+    const getElement = item.getAttribute('data-element')
+    const getId = item.getAttribute('data-id')
+
+    switch (getElement) {
+      case TodoEvent.delete: {
+        const getSectionId = item.getAttribute('data-section-id')
+        if (getSectionId && getId) deleteTodo(getSectionId, getId)
+      }
+    }
+  }
 
   return (
     <div
@@ -22,7 +42,7 @@ export default function TodoList() {
       <UserDialog />
       <main className="flex flex-col gap-[16px] px-6">
         <FilterSection />
-        <div className="flex gap-[32px]">
+        <div className="flex gap-[32px]" onClick={handleClick}>
           {sections && (
             <SectionDnD
               sections={sections}

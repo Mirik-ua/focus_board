@@ -42,6 +42,7 @@ export function SectionTodo({ section }: { section: SectionType }) {
                 done={s.done}
                 name={s.name}
                 id={s.id}
+                sectionId={section.id}
               />
             ))
           : null}
@@ -57,38 +58,26 @@ type Props = {
   done: boolean
   name: string
   id: string
+  sectionId: string
 }
 
-const MapTodo = ({ activeFilter, handleChange, done, id, name }: Props) => {
+const MapTodo = ({
+  activeFilter,
+  handleChange,
+  done,
+  id,
+  name,
+  sectionId,
+}: Props) => {
+  const args = { activeFilter, handleChange, done, id, name, sectionId }
   switch (activeFilter) {
     case 'active': {
-      return !done ? (
-        <TodoBlock
-          handleChange={handleChange}
-          done={done}
-          name={name}
-          id={id}
-        />
-      ) : null
+      return !done ? <TodoBlock {...args} /> : null
     }
     case 'completed': {
-      return done ? (
-        <TodoBlock
-          handleChange={handleChange}
-          done={done}
-          name={name}
-          id={id}
-        />
-      ) : null
+      return done ? <TodoBlock {...args} /> : null
     }
     default:
-      return (
-        <TodoBlock
-          handleChange={handleChange}
-          done={done}
-          name={name}
-          id={id}
-        />
-      )
+      return <TodoBlock {...args} />
   }
 }

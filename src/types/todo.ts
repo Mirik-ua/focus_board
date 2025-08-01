@@ -18,3 +18,7 @@ export type SectionType = {
   color: string
   todos: TodoType[]
 }
+
+export enum TodoEvent {
+  delete = 'delete'
+}
