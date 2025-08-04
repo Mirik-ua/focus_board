@@ -10,7 +10,7 @@ const initialField = {
   error: null,
 }
 
-const inputValidation = (val: string) => val.length > 2
+export const inputValidation = (val: string) => val.length > 2
 
 export default function UserDialog() {
   const { user, mode, isPopShow, setUser, setMode, togglePopover } =

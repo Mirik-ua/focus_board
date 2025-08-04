@@ -3,7 +3,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { ReactNode, ComponentType } from 'react'
+import { ReactNode } from 'react'
 
 type Props = {
   children: ReactNode
