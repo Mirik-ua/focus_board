@@ -19,6 +19,14 @@ export type SectionType = {
   todos: TodoType[]
 }
 
+export type TodoEditMode = {
+  active: boolean,
+  todoId: string | null,
+  sectionId: string | null,
+  value: string,
+}
+
 export enum TodoEvent {
-  delete = 'delete'
+  delete = 'delete',
+  edit = 'edit',
 }

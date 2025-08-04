@@ -8,9 +8,18 @@ import { useStoreTodo } from '@/store/todo'
 import { SectionDnD } from '@/components/dnd'
 import { TodoEvent } from '@/types/todo'
 import { MouseEvent } from 'react'
+import { TodoEditDialog } from '@/components/todo/TodoEditDialog'
 
 export default function TodoList() {
-  const { sections, updateSectionIndex, deleteTodo } = useStoreTodo()
+  const {
+    sections,
+    updateSectionIndex,
+    deleteTodo,
+    editModeOff,
+    editModeOn,
+    todoEditMode,
+    editModeSubmit,
+  } = useStoreTodo()
   const color = useColors()
 
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
@@ -26,7 +35,17 @@ export default function TodoList() {
     switch (getElement) {
       case TodoEvent.delete: {
         const getSectionId = item.getAttribute('data-section-id')
-        if (getSectionId && getId) deleteTodo(getSectionId, getId)
+        if (getSectionId && getId) return deleteTodo(getSectionId, getId)
+      }
+      case TodoEvent.edit: {
+        const getSectionId = item.getAttribute('data-section-id')
+        if (getSectionId && getId) {
+          return editModeOn({
+            sectionId: getSectionId,
+            todoId: getId,
+            active: true,
+          })
+        }
       }
     }
   }
@@ -40,6 +59,12 @@ export default function TodoList() {
       }}
     >
       <UserDialog />
+      <TodoEditDialog
+        onClose={editModeOff}
+        onSubmit={editModeSubmit}
+        active={todoEditMode.active}
+        editTodo={todoEditMode}
+      />
       <main className="flex flex-col gap-[16px] px-6">
         <FilterSection />
         <div className="flex gap-[32px]" onClick={handleClick}>

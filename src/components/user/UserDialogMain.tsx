@@ -30,6 +30,7 @@ function FooterContent() {
     <div className="pt-4 flex items-center justify-self-end">
       <Button
         type={'submit'}
+        form="user_info"
         className="px-4 py-2 rounded-lg bg-gradient-to-r from-lime-500 to-green-600 text-black hover:from-lime-600 hover:to-green-700 transition shadow-lg"
       >
         Apply
@@ -44,7 +45,7 @@ export function UserDialogMain({
   data,
 }: DialogContentWrapperType) {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} id="user_info">
       <DialogContent onChange={onChange} data={data} />
       <FooterContent />
     </form>
