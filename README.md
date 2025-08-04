@@ -4,7 +4,7 @@
 
 ## ✨ Features
 
-- ✅ Add / remove todos
+- ✅ Add / remove / edit todos
 - 👤 User setup
 - 🔍 Filter todos: `All`, `Active`, `Completed`
 - 📦 Drag & Drop sorting for sections and tasks (`@dnd-kit`)
