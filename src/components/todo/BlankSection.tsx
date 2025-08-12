@@ -4,6 +4,7 @@ import { InputProcess } from '@/types/process'
 import { useState } from 'react'
 import { useStoreTodo } from '@/store/todo'
 import { useUId } from '@/hooks/useUid'
+import { parsedValue } from '@/utils'
 
 type FieldType = {
   value: string
@@ -24,9 +25,10 @@ export function BlankSection({ color }: PropsType) {
   const handleSubmit = (e: InputProcess<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (field.value.length <= 2) {
-      setField((prev) => ({ ...prev, error: 'min length is 3 characters' }))
-      return
+    const { success, error } = parsedValue(field.value)
+
+    if (!success && error) {
+      return setField((prev) => ({ ...prev, error }))
     }
 
     const firstInput = e.currentTarget.elements[0] as HTMLInputElement
@@ -39,12 +41,13 @@ export function BlankSection({ color }: PropsType) {
 
   const handleChange = (e: InputProcess<HTMLInputElement>): void => {
     const { value } = e.target
-    setField((prev) => {
-      if (value.length > 2) {
-        return { error: null, value }
-      }
-      return { ...prev, value }
-    })
+    const { success } = parsedValue(value)
+
+    if (!success) {
+      setField((prev) => ({ ...prev, value: value }))
+    } else {
+      setField({ error: null, value: value })
+    }
   }
 
   return (

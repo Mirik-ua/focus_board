@@ -40,9 +40,7 @@ export function BlankTodo({ sectionId, sectionName }: SectionsType) {
   }
 
   const handleChange = (e: InputProcess<HTMLInputElement>): void => {
-    const {
-      target: { value },
-    } = e
+    const { value } = e.target
     const { success } = parsedValue(value)
 
     if (!success) {
