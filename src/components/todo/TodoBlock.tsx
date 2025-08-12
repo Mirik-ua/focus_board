@@ -24,7 +24,12 @@ export function TodoBlock({ name, id, sectionId, done, handleChange }: Props) {
         transition: 'background-color 0.6s ease',
       }}
     >
-      <div id={id} className="flex items-center gap-2 justify-between">
+      <div
+        id={id}
+        data-todo-id={id}
+        data-section-id={sectionId}
+        className="flex items-center gap-2 justify-between"
+      >
         <div className="flex gap-2 items-center">
           <Checkbox checked={done} onCheckedChange={() => handleChange(id)} />
           <span className="text-sm">{name}</span>

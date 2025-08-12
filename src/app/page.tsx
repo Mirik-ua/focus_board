@@ -7,7 +7,7 @@ import { useColors } from '@/hooks/useColor'
 import { useStoreTodo } from '@/store/todo'
 import { SectionDnD } from '@/components/dnd'
 import { TodoEvent } from '@/types/todo'
-import { MouseEvent } from 'react'
+import { MouseEvent, useEffect } from 'react'
 import { TodoEditDialog } from '@/components/todo/TodoEditDialog'
 
 export default function TodoList() {
@@ -50,6 +50,33 @@ export default function TodoList() {
     }
   }
 
+  const handleDoubleClick = (e: MouseEvent) => {
+    if (!(e.target instanceof HTMLElement)) return
+
+    const { target } = e
+
+    const validationDbClick =
+      target.tagName.toLowerCase() !== 'svg' &&
+      target.tagName.toLowerCase() !== 'button'
+
+    if (validationDbClick) {
+      const item = target.closest('[data-todo-id]')
+
+      if (!item) return
+
+      const sectionId = item.getAttribute('data-section-id')
+      const todoId = item.getAttribute('data-todo-id')
+
+      if (sectionId && todoId) {
+        return editModeOn({
+          sectionId,
+          todoId,
+          active: true,
+        })
+      }
+    }
+  }
+
   return (
     <div
       className="flex font-sans pt-20 gap-16 overflow-x-scroll pb-6"
@@ -67,7 +94,11 @@ export default function TodoList() {
       />
       <main className="flex flex-col gap-[16px] px-6">
         <FilterSection />
-        <div className="flex gap-[32px]" onClick={handleClick}>
+        <div
+          className="flex gap-[32px]"
+          onClick={handleClick}
+          onDoubleClick={handleDoubleClick}
+        >
           {sections && (
             <SectionDnD
               sections={sections}
