@@ -10,6 +10,24 @@ import { TodoEvent } from '@/types/todo'
 import { MouseEvent, useEffect } from 'react'
 import { TodoEditDialog } from '@/components/todo/TodoEditDialog'
 
+async function getTodos() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`, {
+    cache: 'no-store',
+  })
+  return await res.json()
+}
+
+// async function createTodos() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`, {
+//     cache: 'no-store',
+//     method: 'POST',
+//     body: JSON.stringify({
+//       section: 'first section',
+//     }),
+//   })
+//   return res.json()
+// }
+
 export default function TodoList() {
   const {
     sections,
@@ -21,6 +39,15 @@ export default function TodoList() {
     editModeSubmit,
   } = useStoreTodo()
   const color = useColors()
+
+  async function loadTodos() {
+    const todos = await getTodos()
+    console.log(todos)
+  }
+
+  useEffect(() => {
+    loadTodos()
+  }, [])
 
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement

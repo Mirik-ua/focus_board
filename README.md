@@ -40,3 +40,28 @@ npm run dev
 # Deployed
 👉 https://focusboard-phi.vercel.app
 ```
+
+<!-- const props = { a : 'Hello World', toString: () => props.a.toString() } const el = document.getElementById('root'); el.innerText = props
+
+
+const arr = ['you', 'me', 'he', 'she', 'she', 'me', 'me', 'you'];
+
+
+const input = [
+  {from : 'Alaska', to: 'Alabama'},
+  {from : 'Florida', to: 'Iowa'},
+  {from : 'Montana', to: 'Nevada'},
+  {from : 'Alabama', to: 'Florida'},
+  {from : 'Nevada', to: 'Alaska'},
+]
+
+/* const output = [
+  {from : 'Montana', to: 'Nevada'},
+  {from : 'Nevada', to: 'Alaska'},
+  {from : 'Alaska', to: 'Alabama'},
+  {from : 'Alabama', to: 'Florida'},
+  {from : 'Florida', to: 'Iowa'},
+] */
+
+//["me", "you", "she", "he"]
+ -->
